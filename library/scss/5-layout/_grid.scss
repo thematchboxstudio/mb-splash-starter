@@ -1,0 +1,99 @@
+@include bp(tablet) {
+
+	// Grid
+	.onecol    { width: $onecol;  } // 4.85%;  } /* grid_1  */
+	.twocol    { width: $twocol; } // 13.45%; } /* grid_2  */
+	.threecol  { width: $threecol; } // 22.05%; } /* grid_3  */
+	.fourcol   { width: $fourcol; } // 30.75%; } /* grid_4  */
+	.fivecol   { width: $fivecol; } // 39.45%; } /* grid_5  */
+	.sixcol    { width: $sixcol; } // 48%;    } /* grid_6  */
+	.sevencol  { width: $sevencol; } // 56.75%; } /* grid_7  */
+	.eightcol  { width: $eightcol; } // 65.4%;  } /* grid_8  */
+	.ninecol   { width: $ninecol; } // 74.05%; } /* grid_9  */
+	.tencol    { width: $tencol; } // 82.7%;  } /* grid_10 */
+	.elevencol { width: $elevencol; } // 91.35%; } /* grid_11 */
+	.twelvecol { width: $twelvecol; } // 100%;   } /* grid_12 */
+
+	// layout & column defaults
+	.onecol, .twocol, .threecol, .fourcol, .fivecol,
+	.sixcol, .sevencol, .eightcol, .ninecol, .tencol,
+	.elevencol, .twelvecol {
+	  position: relative;
+	  float: left;
+	  margin-left: 2.762430939%;
+	}
+
+	.first {
+	  margin-left: 0;
+	}
+
+	.last {
+	  float: right;
+	}
+
+}// * BP
+
+// ********************
+// LAYOUT & GRID STYLES
+// ********************
+
+// wraps
+.wrap {
+	width: 96%;
+	margin: 0 auto;
+
+	@include bp(tablet) {
+		max-width: $site-width;
+	}// * BP
+
+}// wrap
+
+	.content-wrap {
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+
+		@include bp(desktop) {
+
+		}// * BP
+
+	}// content-wrap
+
+	.title-wrap {
+		//width: 85%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+
+		.content-wrap & {
+			//width: 100%;
+		}
+
+		@include bp(desktop) {
+			//width: 80%;
+		}// * BP
+
+	}// title-wrap
+
+
+// main ocnav containers
+.st-pusher { // was #container
+	background: $white; // the main container's background
+	height: 100%;
+	width: 100%;
+	position: relative;
+}// st-pusher
+
+.st-content-inner { // was content-header-wrap
+	height: auto;
+	min-height: 100%;
+	margin-bottom: -$footer-height;
+
+	&::after {
+		content: "";
+		display: block;
+		height: $footer-height;
+	}// after
+
+}// st-content-inner
+

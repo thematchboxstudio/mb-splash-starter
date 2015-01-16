@@ -1,0 +1,50 @@
+// HEADER
+.header {
+	margin: 0 auto;
+	background: transparent;
+
+	@include bp(tablet) {
+		width: 100%;
+	}// * BP
+
+	@include bp(67em) {
+	}// * BP
+
+}// header
+
+#inner-header {
+	width: 100%;
+	position: relative;
+}// inner-header
+
+#logo  {
+	padding: 0 2%;
+	float: left;
+	width: 70%;
+	margin: .45em 0;
+
+	a {
+		display: block;
+		width: 100%;
+
+		@include bp(tablet) {
+
+			@include on-event {
+				opacity: .8;
+			}
+
+		}// * BP
+
+	}// a
+
+	@include bp(tablet) {
+		float: none;
+		padding: 0;
+		margin: $marginhalf 0;
+		width: auto;
+	}// * BP
+
+}// #logo
+
+
+

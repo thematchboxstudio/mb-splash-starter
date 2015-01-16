@@ -1,0 +1,35 @@
+%icon {
+	background-repeat: no-repeat;
+	background-image: url(svg/sprite.svg);
+}
+
+.icon-facebook {
+	background-position: 0 0;
+	@extend %icon;
+}
+
+.icon-facebook-dims {
+	width: 32px;
+	height: 32px;
+}
+
+.icon-instagram {
+	background-position: 0 -32px;
+	@extend %icon;
+}
+
+.icon-instagram-dims {
+	width: 32px;
+	height: 32px;
+}
+
+.icon-twitter {
+	background-position: 0 -64px;
+	@extend %icon;
+}
+
+.icon-twitter-dims {
+	width: 32px;
+	height: 32px;
+}
+

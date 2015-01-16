@@ -1,0 +1,384 @@
+// FORMS
+// If you're editing the styles of forms, use _form-theme.scss
+// This file is for structural stuff
+
+// TO DO: clean up this file
+
+
+[placeholder] {
+	color: $black;
+}
+
+::-webkit-input-placeholder {
+	font-size: 1em;
+	color: $black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	font-size: 1em;
+	color: $black;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	font-size: 1em;
+	color: $black;
+}
+
+:-ms-input-placeholder {
+	font-size: 1em;
+	color: $black;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.1s 0.1s ease-in-out;
+  opacity: 0;
+}
+
+.name-form:focus::-webkit-input-placeholder {
+  transition: text-indent 0.1s 0.1s ease-in-out;
+  text-indent: -100%;
+  opacity: 1;
+}
+
+form {
+	margin: 0 0 $margin;
+
+	&#searchform {
+
+		input[type="text"] {
+			width: 70%;
+		}
+
+		input[type="submit"] {
+			width: 30%;
+		}
+
+	}// searchform
+
+}// form
+
+button {
+	-webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="file"],
+input[type="url"],
+input[type="password"],
+textarea {
+	font-size: 1rem; // removes any zooming in when you activate an input on mobile
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    border-radius: 0;
+    max-width: 100%;
+}
+
+
+.gform_wrapper {
+	// padding: $margin3x 0;
+	// border-top: 1px solid $border-gray;
+}
+
+.gfield {
+	@include clearfix;
+	width: 100%;
+	margin: 0 0 5%;
+
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="password"] {
+		width: 100%;
+	}
+
+	@include bp(phone-large) {
+		width: 49%;
+		margin: 0 2% 2% 0;
+		float: left;
+
+		&.ginput_right  {
+			// add this class to push a field to the right
+			margin-right: 0;
+		}
+
+	}// * BP
+
+}// gfield
+
+.gfield.full-width {
+	// add full-width class to make a field be full-width (duh)
+	width: 100%;
+	clear: both;
+
+	input[type="text"],
+	textarea {
+		width: 100%;
+	}
+
+}// full-width
+
+.gfield.full-width-mobile {
+	// add this class to make it full-width on mobile
+	width: 100%;
+	clear: both;
+
+	input[type="text"],
+	textarea {
+		width: 50%;
+	}
+
+}// full-width-mobile
+
+.gfield.full-name {
+	// add class full-name to the field,
+	// and gf-add-placeholder if using placeholders
+	width: 100%;
+
+	input[type="text"] {
+		//width: 49%;
+		//margin-right: 2%;
+	}
+
+	.ginput_right input[type="text"] {
+		//margin-right: 0;
+	}
+
+}// full-name
+
+.gfield_html {
+	width: 100%;
+	clear: both;
+}
+
+.gform_fields {
+	//padding: $margin3x 0 0;
+	margin: 0;
+	//border-top: 1px solid $border-gray;
+	@include clearfix;
+
+	li:first-child {
+		margin: 0;
+	}
+
+}// gform_fields
+
+.intro-section {
+	// add this class to an intro paragraph type field
+	width: 100%;
+	clear: both;
+
+	@include bp(tablet) {
+		font-weight: 700;
+	}// * BP
+
+}// intro-section
+
+.gfield_required {
+	color: $red;
+}
+
+.gfield.gsection {
+	padding-top: $margin3x;
+	margin-top: $margin2x;
+	margin-bottom: 0;
+	border-top: 1px solid $border-gray;
+	width: 100%;
+	clear: both;
+
+	&.no-top-border {
+		border-top: none;
+		padding-top: 0;
+	}
+
+}// gsection
+
+.gsection_title {
+	text-transform: none;
+	margin: 0 0 ($marginquarter);
+}// section title
+
+.gsection_description {
+	margin-bottom: $marginhalf;
+}// description
+
+.gfield_label {
+	margin: $marginquarter 0 ($marginhalf + $marginquarter);
+	display: block;
+}
+
+// ////////////////////////////////////////////////// INPUT FIELDS
+.screen-reader-text {
+	display: none;
+}
+
+input,
+input[type="text"],
+textarea,
+input[type="password"],
+input[type="search"] {
+	color: $red;
+	font-weight: 700;
+	background-color: $border-gray;
+	border: none;
+	padding: $marginhalf;
+	border: 2px solid transparent;
+
+	&:focus {
+		outline: none;
+		text-align: left;
+		border: 2px solid $black;
+	}
+
+}// input
+
+// ////////////////////////////////////////////////// RADIO
+.gfield_radio label,
+.gfield_checkbox label {
+	font-weight: 700;
+	font-size: 1.125em;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	margin: 0 $marginhalf 0 0;
+
+	&:checked + label {
+		color: $red;
+	}
+
+}// radio
+
+.gfield_radio,
+.gfield_checkbox {
+
+	li {
+		@include clearfix;
+		padding: $marginhalf 0;
+		margin: 0 0 $marginhalf;
+
+		@include bp(tablet-small) {
+			padding: 0;
+			margin: 0 0 $marginhalf;
+			width: 100%;
+		}// * BP
+
+	}// li
+
+	.horizontal & {
+		// add class horizontal to make the radio buttons horizontal
+		li {
+			float: left;
+			margin-right: $margin2x;
+		}// li
+
+	}// horizontal
+
+}// radio checkbox
+
+.gfield_checkbox {
+
+	li:first-child {
+		margin: 0 $margin2x $marginhalf 0;
+	}
+
+}// checkbox
+
+.gfield_radio {
+
+	li:first-child {
+		margin: 0 $margin2x $marginhalf 0;
+	}
+
+}// radio
+
+
+// ////////////////////////////////////////////////// SELECT & TEXTAREA
+.gfield select,
+.gfield textarea {
+	margin: 0 0 $margin;
+}
+
+.gform_footer {
+	width: 100%;
+	clear: both;
+	@include clearfix;
+
+	.launch-link-on-red {
+		margin: $marginhalf 0 0;
+	}
+}
+
+// ////////////////////////////////////////////////// DATE PICKER
+.ui-datepicker {
+	background: $white;
+}
+
+
+// ////////////////////////////////////////////////// SUBMIT BUTTON
+.form-submit {
+	position: relative;
+	float: left;
+	margin: 0;
+
+	button {
+		border: none;
+		display: block;
+		position: relative;
+		width: auto;
+		height: auto;
+		padding: 1em 2em 1.25em;
+		font-weight: 700;
+		text-decoration: none;
+		font-size: 1.25em;
+	}
+
+	span {
+		display: block;
+		position: relative;
+		top: 0;
+		width: auto;
+	}
+
+	a {
+		padding: 1em 2em 1.25em;
+	}// a
+
+}// form-submit
+
+
+// ////////////////////////////////////////////////// CONFIRMATION
+#gforms_confirmation_message {
+	padding: $margin3x 0;
+	margin: $margin3x 0;
+}
+
+.gform_confirmation_message {
+	text-align: center;
+}
+
+// /////////////////////////////////////////////////// ERRORS
+.red-alert {
+	font-style: italic;
+}
+.validation_error {
+	color: $red;
+	font-size: 1.125em;
+	font-weight: 700;
+	background: $alert-red;
+	width: 100%;
+	display: block;
+	clear: both;
+	padding: $margin;
+	margin-bottom: $margin;
+}
+.validation_message {
+	color: $red;
+	display: block;
+	width: 100%;
+	font-weight: 700;
+}

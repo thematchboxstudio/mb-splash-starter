@@ -1,0 +1,22 @@
+{
+  "name": "STARTER",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-autoprefixer": "*",
+    "grunt-combine-media-queries": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-nodeunit": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-imageoptim": "*",
+    "grunt-modernizr": "^0.5.2",
+    "grunt-sass-directory-import": "^0.1.1",
+    "grunt-svg-sprite": "^0.3.2",
+    "grunt-svgmin": "*",
+    "grunt-uncss": "*"
+  }
+}

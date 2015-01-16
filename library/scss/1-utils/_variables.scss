@@ -1,0 +1,74 @@
+// GLOBAL VARIABLES
+
+
+/*********************
+UNITS
+*********************/
+$site-width: 1216px;
+$slider-max-width: $site-width;
+
+$margin: 1.5em;
+$marginhalf: (.5 * $margin);
+$marginquarter: (.25 * $margin);
+$margin2x: (2 * $margin);
+$margin3x: (3 * $margin);
+$margin4x: (4 * $margin);
+$margin5x: (5 * $margin);
+$margin6x: (6 * $margin);
+$margin7x: (7 * $margin);
+$margin8x: (8 * $margin);
+
+// min-height of the footer, so it's sticky to the bottom.
+$footer-height: 100px;
+
+$onecol    : 5.801104972%;        /* 4.85%;   /* grid_1  */
+$twocol    : 14.364640883%;       /* 13.45%;  /* grid_2  */
+$threecol  : 22.928176794%;       /* 22.05%;  /* grid_3  */
+$fourcol   : 31.491712705%;       /* 30.75%;  /* grid_4  */
+$fivecol   : 40.055248616%;       /* 39.45%;  /* grid_5  */
+$sixcol    : 48.618784527%;       /* 48%;     /* grid_6  */
+$sevencol  : 57.182320438000005%; /* 56.75%;  /* grid_7  */
+$eightcol  : 65.74585634900001%;  /* 65.4%;  /* grid_8  */
+$ninecol   : 74.30939226%;        /* 74.05%; /* grid_9  */
+$tencol    : 82.87292817100001%;  /* 82.7%;  /* grid_10 */
+$elevencol : 91.436464082%;       /* 91.35%;  /* grid_11 */
+$twelvecol : 99.999999993%;       /* 100%;    /* grid_12 */
+
+
+
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+
+$black: #000;
+$white: #fff;
+$gray:  #666;
+$placeholder-gray:  #AAA;
+$light-gray:  #f1f1f1;
+$border-gray: #E5E5E5;
+$bg-gray: #ebebeb;
+$red: red;
+$blue: blue;
+
+$accent: $red;
+
+$text-color:  #333;
+$link-color:  $accent;
+$link-hover:  darken($link-color, 9%);
+
+$alert-yellow:  #ebe16f;
+$alert-red: #fbe3e4;
+$alert-green: #e6efc2;
+$alert-blue:   #d5edf8;
+
+
+
+/*********************
+TYPOGRAPHY
+*********************/
+
+$sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: "Georgia", Cambria, Times New Roman, Times, serif;
+

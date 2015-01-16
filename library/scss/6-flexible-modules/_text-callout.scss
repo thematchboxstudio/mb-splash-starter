@@ -1,0 +1,28 @@
+// text callout
+
+.text-callout {
+	background: $accent;
+	padding: $margin3x;
+
+	@include bp(tablet) {
+		padding: $margin5x $margin6x;
+	}// * BP
+
+	h1 {
+		color: $white;
+		text-transform: none;
+		text-align: center;
+	}
+
+}// callout
+
+.text-callout-attribute {
+	text-align: center;
+	color: $white;
+	font-weight: 700;
+
+	@include bp(tablet-small) {
+		text-align: center;
+	}// * BP
+
+}// attribute

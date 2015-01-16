@@ -1,0 +1,206 @@
+// FORM THEME
+
+// Add stylings here. the forms.scss should be for default structural stuff.
+
+
+	////////////////////////////////////////////////
+	// CLASSES YOU CAN ADD IN WP
+	////////////////////////////////////////////////
+
+	// format:
+	// .what-to-add-it-to.the-class-to-add - description
+
+	// .gfield.full-width - to a .gfield you want to be full width
+	// .gfield.full-width-mobile - to make it full-width on mobile
+	// .gfield.gf-add-placeholder - if using placeholders
+	// .gfield.ginput_right - to align the field to the right
+	// .gfield_html.intro-section, .gfield.intro-section - to make an intro paragraph that's full-width and clear:both
+
+
+
+	////////////////////////////////////////////////
+	// CONTAINERS AND STUFF
+	////////////////////////////////////////////////
+
+	// THE FORM WRAPPER
+	.gform_wrapper { // DIV
+		// padding: $margin3x 0;
+
+		form {
+
+		}
+
+	}// gform_wrapper
+
+
+	// HEADING
+	.gform_heading { // DIV
+
+	}
+
+	.gform_description { // SPAN
+
+	}
+
+	// BODY
+	.gform_body { // DIV
+
+	}
+
+	// THE MAIN UL OF ALL FIELDS
+	.gform_fields { // UL
+
+	}
+
+	.gfield { // LI
+
+	}
+
+	.gform_footer {
+
+	}
+
+	.form-submit { // DIV, BUTTON CONTAINER
+
+		button { // THE SUBMIT BUTTON
+			background: $red;
+			color: $black;
+
+			@include on-event {
+	    	  	background: shade($red, 75%);
+			}
+		}
+
+	}
+
+	////////////////////////////////////////////////
+	// BODY: SPECIFC FIELD TYPES
+	////////////////////////////////////////////////
+
+	// HTML block
+	.gfield_html { // LI (IS ALSO .gfield)
+		// add .intro-section to a .gfield_html if it's an intro paragraph
+	}
+
+	// STANDARD FIELD
+	.gfield input {
+
+	}
+
+	//.gfield { LI <- this is just to show you the context of the below elements
+
+
+		// LARGE TEXT FIELD
+		.textarea { // TEXTAREA
+
+		}// textarea
+
+
+
+		// SELECT DROPDOWN
+		.gfield_select { // SELECT
+
+			option {
+
+			}
+
+		}// select
+
+
+		// RADIO SELECT
+		.gfield_radio { // UL
+
+			li { // the radio's wrapper
+
+				input { // the radio button
+
+				}
+
+				label { // the radio's label
+
+				}
+
+			}
+
+		}// radio
+
+
+		// CHECKBOX
+		.gfield_checkbox { // UL
+
+			li { // the checkbox's wrapper
+
+				input { // the checkbox
+
+				}
+
+				label { // the checkbox's label
+
+				}
+
+			}
+
+		}// checkbox
+
+
+		// DATEPICKER UI
+		.ui-datepicker { // DIV made up of the calendar dates
+
+		}
+
+
+		// DATEPICKER
+		.datepicker { // INPUT
+
+		}
+
+
+		// URL
+		input[type="url"] { // INPUT
+
+		}
+
+
+		// FILE
+		input[type="file"] { // INPUT
+
+		}
+
+
+
+	//} end .gfield
+
+
+
+	////////////////////////////////////////////////
+	// MESSAGES
+	////////////////////////////////////////////////
+
+	#gforms_confirmation_message {
+
+	}
+
+	.gform_confirmation_message {
+
+	}
+
+
+
+	////////////////////////////////////////////////
+	// ERRORS
+	////////////////////////////////////////////////
+
+	.gfield_required { // The *
+		color: $red;
+	}// required
+
+	.validation_error { // The box that shows up top when there are errors with the form.
+		color: $red;
+		background: tint($red, 25%);
+	}// validation error
+
+	.gfield_description.validation_message { // the labels that are red when an error occurs
+
+	}// validation message
+
+

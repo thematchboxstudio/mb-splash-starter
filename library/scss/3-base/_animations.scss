@@ -1,0 +1,544 @@
+// ANIMATIONS
+
+$duration: 1s;
+$duration-quick: .1s;
+$duration-instant: 0s;
+$duration-slow: 5s;
+
+// OVERFLOW
+.px-drawer,
+.social .instagram-image,
+.areas-of-expertise,
+.text-columns.with-title,
+.story-process,
+.text-box-with-bg,
+.bottom-touts {
+	overflow: hidden;
+	position: relative; // not sure if this will break anything
+}
+
+.animated{
+	animation-fill-mode: both;
+	animation-duration: $duration;
+}// animated
+
+.animated-slow {
+	animation-fill-mode: both;
+	animation-duration: $duration-slow;
+}// animated-slow
+
+
+// FADES
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+
+// SLIDING
+@keyframes slideUp {
+	//0% {transform:translateY(1000%);}
+	0% {
+		transform: translateY(200%);
+		transform: translate3d(0, 200%, 0);
+	}
+	100% {
+		transform: translateY(0%);
+		transform: translate3d(0, 0%, 0);
+	}
+}
+@keyframes slideDown {
+	0% {
+		transform: translateY(-1000%);
+		transform: translate3d(0, -1000%, 0);
+	}
+	0% {
+		transform: translateY(-100%);
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		transform: translateY(0%);
+		transform: translate3d(0, 0%, 0);
+	}
+}
+@keyframes slideLeft {
+	0% {
+		transform: translateX(1000%);
+		transform: translate3d(1000%, 0, 0);
+	}
+	100% {
+		transform: translateX(0%);
+		transform: translate3d(0, 0%, 0);
+	}
+}
+@keyframes slideRight {
+	0% {
+		transform: translateX(-200%);
+		transform: translate3d(-200%, 0, 0);
+	}
+	100% {
+		transform: translateX(0%);
+		transform: translate3d(0%, 0, 0);
+	}
+}
+
+
+// ROTATING
+@keyframes rotateLeft {
+	0% {
+		transform: rotate(360deg);
+		transform-origin: center center;
+	}
+	100% {
+		transform: rotate(0deg);
+		transform-origin: center center;
+	}
+}
+
+@keyframes rotateLeftscaleUp {
+	0% {
+		transform: rotate(-360deg) scale(1);
+		transform-origin: center center;
+	}
+	100% {
+		transform: rotate(-315deg) scale(1.75);
+		transform-origin: center center;
+	}
+}
+
+
+// CUSTOM KEYFRAMES
+@keyframes slideTitle {
+	0% {
+		transform: translateY(-1000%);
+		transform: translate3d(0, -1000%, 0);
+	}
+	100% {
+		transform: translateY(0%);
+		transform: translate3d(0, 0%, 0);
+	}
+}
+@keyframes slideTagLink {
+	0% {
+		transform: translate3d(200px, 0, 0);
+	}
+	33.3334% {
+		transform: translate3d(200px, 0, 0);
+	}
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+@keyframes fixedSlide {
+	0% {
+		transform: translateY(2560px);
+		transform: translate3d(0, 2560px, 0);
+	}
+	100% {
+		transform: translateY(0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+
+// NAV ITEMS
+@keyframes topnavItemHover {
+	0% { width:0; }
+	100% { width:75%; }
+}
+@keyframes subnavItemHover {
+	0% { width:0; }
+	100% { width:100%; }
+}
+
+
+// FEATURED WORKS
+@keyframes hoverCloseBefore {
+	0% {
+		transform: rotate(45deg) scale(1);
+		transform-origin: center center;
+	}
+	40% {
+		transform: rotate(0deg) scale(1);
+		transform-origin: center center;
+	}
+	100% {
+		transform:rotate(45deg) scale(1.25);
+		transform-origin: center center;
+	}
+}
+@keyframes hoverCloseAfter {
+	0% {
+		transform: rotate(-45deg) scale(1);
+		transform-origin: center center;
+	}
+	40% {
+		transform: rotate(0deg) scale(1);
+		transform-origin: center center;
+	}
+	100% {
+		transform: rotate(-45deg) scale(1.25);
+		transform-origin: center center;
+	}
+}
+
+// OUR STORY PROCESS
+@keyframes processIcons {
+	0% {
+		transform: translateY(500%);
+		transform: translate3d(0, 500%, 0);
+		opacity: 0;
+	}
+	85% {
+		transform: translateY(-15%);
+		transform: translate3d(0, -15%, 0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0%);
+		transform: translate3d(0, 0%, 0);
+		opacity: 1;
+	}
+}
+@keyframes dashShow {
+	0% { stroke-dashoffset: 0; }
+	100% { stroke-dashoffset: -1000; }
+}
+@keyframes arrowShow {
+	0% { fill: $red; }
+	100% { fill: #fff; }
+}
+
+@keyframes rippleDot {
+	0% { opacity: 0; }
+	10% { opacity: 1; }
+	30% { opacity: 1; }
+	40% { opacity: .1; }
+	50% { opacity: 1; }
+	100% { opacity: 1; }
+}
+
+@keyframes rippleOne {
+	0% { opacity: 0; }
+	10% { opacity: 0; }
+	20% { opacity: 1; }
+	50% { opacity: 0; }
+	60% { opacity: 1; }
+	100% { opacity: 1; }
+}
+
+@keyframes rippleTwo {
+	0% {opacity: 0;}
+	20% {opacity: 0;}
+	30% {opacity: 1;}
+	35% {opacity: 1;}
+
+	60% {opacity: 0;}
+	70% {opacity: 1;}
+	100% {opacity: 1;}
+}
+
+
+// FADES
+.animate.fadeIn {
+	animation: fadeIn 1s ease-in-out 1 both;
+	animation: fadeIn .75s ease-in-out 1 both;
+}
+
+.lazyload {
+	opacity: 0;
+
+	&.fadeIn {
+		animation: fadeIn 1s ease-in-out 1 both;
+		opacity: 1;
+
+		.blog-image-wrap & img {
+			animation: fadeIn 1s ease-in-out 1 both;
+			opacity: 1;
+		}// blog-image-wrap & img
+
+	}// fadeIn
+
+	&.archive-hero {
+		opacity: 1;
+	}// archive-hero
+
+	&.absolute-image {
+		// the product background on the single expertise pages
+		// wasn't being seen by lazy load so this is a hack
+		opacity: 1;
+	}// absolute-image
+
+}// lazyload
+
+.inner-content .lazyload {
+	opacity: 1;
+}
+
+
+@include bp(tablet) {
+
+	// ACTIVATE CUSTOM ANIMATIONS CLASSES
+
+	// SLIDING
+	.animate.slideUp {
+		animation: slideUp 2s ease-in-out 1 both;
+		animation: slideUp 1s ease-in-out .5s both;
+	}
+	.animate.slideDown {
+		animation: slideDown 1s ease-in-out 1 both;
+	}
+	.animate.slideLeft {
+		animation: slideLeft 1.5s ease-in-out 1 both;
+	}
+	.animate.slideRight {
+		animation: slideRight 1s ease-in-out .25s both;
+	}
+
+	// ROTATING
+	.animate.rotateLeft {
+		animation: rotateLeft .5s ease-in-out 1 both;
+	}
+	.animate.rotateRight {
+		animation: rotateRight .5s ease-in-out 1 both;
+	}
+
+	// DELAY ITEMS
+	.animated {
+		// @for $i from 1 through 15 { // changed from 50, there are 13 expertise items
+		// 	&.animate:nth-of-type(#{$i}) {
+		// 		animation-delay: (#{$i*0.125s});
+		// 	}
+		// }// i
+		&.animate:nth-of-type(1) {
+			animation-delay: 0s;
+		}
+	}// animated
+
+	// HOME ANIMATIONS ON LOAD
+	.home {
+		.home-hero {
+			background: $black;
+			.fadeIn {
+				animation: fadeIn 1.25s ease-in-out 1 both;
+			}// fade in
+			.slideLeft {
+				animation: slideTagLink .5s ease-out 1s 1 both;
+			}// slide-left
+		}// home-hero
+		.content-box.animate + .lead-in {
+			overflow: hidden;
+			.slideDown {
+				animation: slideDown .5s ease-out .75s 1 both;
+			}// slide down
+		}// lead-in
+	}// .home
+
+	// NAVIGATION and LINK HOVERS
+	.top-nav li:not(.current_page_item):not(.current-page-ancestor):not(.current_page_parent) a:hover:after {
+		animation: topnavItemHover .25s ease-in-out 1;
+	}// top nav li not
+
+	.sub-nav li:not(.current-menu-item):not(.current_page_item):not(.current-page-ancestor):not(.current_page_parent) a:hover:after,
+	.follow-link:hover:after,
+	.social a:hover:after,
+	a:hover em:after {
+		animation: subnavItemHover .25s ease-in-out 1;
+	}// subnav li not
+
+	// ROCKETEER BLOG
+	.blog:not(.paged) {
+
+		.rss-icon {
+
+			.dot {
+				animation: rippleDot 1.5s ease-in 1 both;
+				animation-delay: .5s;
+			}// dot
+
+			.ripple-one {
+				animation: rippleOne 1.5s ease-in 1 both;
+				animation-delay: .5s;
+			}// ripple-one
+
+			.ripple-two {
+				animation: rippleTwo 1.5s ease-in 1 both;
+				animation-delay: .5s;
+			}// ripple-two
+
+			&:hover {
+
+				.dot {
+					animation: rippleDot 1.5s ease-in 1 both;
+				}// dot
+
+				.ripple-one {
+					animation: rippleOne 1.5s ease-in 1 both;
+				}// ripple-one
+
+				.ripple-two {
+					animation: rippleTwo 1.5s ease-in 1 both;
+				}// ripple-two
+
+			}// &:hover
+
+		}// rss-icon
+
+	}// blog not .paged
+
+	.px-drawer{
+		transform-style: preserve-3d;
+		backface-visibility: hidden;
+	}
+
+	.px-element{
+		transform: translate(0,0);
+		transform: translate3d(0,0,0);
+		transform-style: preserve-3d;
+		backface-visibility: hidden;
+
+		&.px-Center{
+			transform: translate(-50%,-50%);
+			transform: translate3d(-50%,-50%,0);
+		}// &.px-Center
+
+	}// px-element
+
+
+
+
+}// * BP
+
+
+/**********************************************
+PAGE SMOOTHSTATE.JS TRANSITIONS
+**********************************************/
+
+/*
+ * CSS Animations
+ * Don't forget to add vendor prefixes!
+ */
+.m-scene {
+	height: 100%;
+
+	#body-class:not(.logged-in) { // if you're not logged in, show the animations
+
+		&.in-progress {
+
+			&:not(.archive):not(.entering-archive):not(.paged) {
+				#main {
+					opacity: 0 !important;
+				}
+			}// not archive or entering-archive and not .paged
+
+			section.news-and-events,
+			section.post-items,
+			section.news-and-events + .pagination,
+			section.post-items + .pagination,
+			footer.footer {
+				transform: translateY(2560px) !important;
+			}// sections
+
+		}// in-progress
+
+		section.news-and-events,
+		section.post-items,
+		section.news-and-events + .pagination,
+		section.post-items + .pagination,
+		footer.footer {
+			animation-name: fixedSlide;
+			animation-duration: 0.4s;
+			transition-timing-function: ease-in;
+			animation-fill-mode: both;
+		}// more sections
+
+		&:not(.archive):not(.entering-archive):not(.paged) #main,
+		&.single-post #content,
+		&.single div.content-footer,
+		&:not(.news-and-events-page):not(.blog):not(.archive):not(.entering-archive) footer.footer {
+			animation-name: fadeIn;
+			animation-duration: 0.4s;
+			transition-timing-function: ease-in;
+			animation-fill-mode: both;
+			animation-fill-mode: both;
+		}// not archive and not entering-archive and not paged #main
+
+		&.mobile:not(.archive):not(.entering-archive):not(.paged) #main,
+		&.tablet:not(.archive):not(.entering-archive):not(.paged) #main {
+			animation-fill-mode: none;
+		}// mobile
+
+		&.paged #main .int-hero .lazyload.fadeIn {
+			animation-duration: 0s;
+		}
+
+	}// not logged-in
+
+
+	&.is-exiting {
+
+		#body-class:not(.logged-in) {
+
+			section.news-and-events,
+			section.post-items,
+			section.news-and-events + .pagination,
+			section.post-items + .pagination,
+			footer.footer {
+				animation-direction: alternate-reverse;
+		 		transition-timing-function: ease-out;
+			}// sections
+
+			&:not(.archive):not(.entering-archive):not(.paged) #main,
+			&.single-post #content,
+			&.single div.content-footer,
+			&:not(.news-and-events-page):not(.blog):not(.archive):not(.entering-archive) footer.footer {
+				animation-direction: alternate-reverse;
+		 		transition-timing-function: ease-out;
+			}// nots
+
+			&.leaving-archive #main {
+				animation-name: fadeIn;
+				animation-duration: 0.4s;
+				animation-fill-mode: both;
+				animation-direction: alternate-reverse;
+		 		transition-timing-function: ease-out;
+			}// leaving
+
+		}// div not logged in
+
+	}// is exiting
+
+	&.in-archive {
+
+		#body-class:not(.logged-in) {
+
+			#main {
+				animation: none !important;
+
+				.int-hero .lazyload.fadeIn {
+					animation-duration: 0s;
+				}// int-hero .lazyload.fadeIn
+
+			}// #main
+
+		}// body-class
+
+	}// in-archive
+
+
+}// .m-scene
+
+#main-body {
+	// fix for safari header flicker when going
+	// from main to category to main and then category
+	// happens in the last step
+	.safari.blog,
+	.safari.news-and-events-page {
+
+		#main .int-hero .lazyload.fadeIn {
+			animation: none;
+		}
+
+	}// safari.blog
+
+}// main-body

@@ -1,0 +1,38 @@
+// START HERE
+
+@import "1-utils/variables";
+@import "1-utils/mixins";
+@import "1-utils/placeholders";
+@import "1-utils/functions";
+
+@import "2-vendors/normalize";
+@import "2-vendors/slick.scss";
+@import "2-vendors/ocnav-components.scss"; // off canvas nav from http://tympanus.net/Development/SidebarTransitions/
+
+@import "3-base/base";
+@import "3-base/typography";
+@import "3-base/animations";
+
+@import "4-components/buttons";
+@import "4-components/flag";
+@import "4-components/items";
+@import "4-components/gallery";
+@import "4-components/icons";
+@import "4-components/progressbar";
+
+@import "5-layout/grid";
+@import "5-layout/header";
+@import "5-layout/nav";
+@import "5-layout/forms";
+@import "5-layout/forms.theme";
+@import "5-layout/footer";
+//@import "layout/sidebars-widgets";
+
+// This, along with the grunt plugin, will import all the scss files inside the modules folder, so we don't have to keep coming back here and adding files.
+@import "6-flexible-modules/all";
+@import "7-pages/all";
+
+// PRINT STYLESHEET
+@media print {
+	@import "1-utils/print";
+}

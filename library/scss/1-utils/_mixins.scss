@@ -1,0 +1,301 @@
+// MIXINS
+
+
+// *********************
+// CLEARFIX
+// *********************/
+
+/// Helper to clear inner floats
+/// @author Nicolas Gallagher
+/// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix Hack
+@mixin clearfix {
+
+  &::before, &::after {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+
+}
+
+// *********************
+// BREAKPOINTS
+// *********************/
+
+$breakpoints: (
+  // these are min-width
+  phone: 16px, //1em;
+  phone-landscape: 400px, //25em;
+  phone-large: 480px,
+  iphone6wide: 667px, // ~
+  tablet-small: 769px,
+  tablet: 896px, //56em;
+  tablet-large: 967px, // nexus 7
+  desktop: 1136px, //71em;
+  desktop-plus: 1450px //71em;
+);
+
+// MIN WIDTH
+@mixin bp($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+  @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+// MAX WIDTH
+@mixin until($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+  @else {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+
+// *********************
+// TRANISTION
+// *********************/
+
+// I totally rewrote this to be cleaner and easier to use.
+// You'll need to be using Sass 3.2+ for these to work.
+// Thanks to @anthonyshort for the inspiration on these.
+// USAGE: @include transition(all 0.2s ease-in-out);
+
+@mixin hovers($time: .2s, $function: ease-in-out, $property: all ) {
+	transition: $property $time $function;
+}
+
+
+// *********************
+// POSITIONING
+// *********************/
+
+@mixin absolute-center($z-index: 2) {
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: $z-index;
+}
+
+/// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/// Shorthand mixin for absolute positioning
+/// Serves as an alias for `position(absolute, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+/// Shorthand mixin for relative positioning
+/// Serves as an alias for `position(relative, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+/// Shorthand mixin for fixed positioning
+/// Serves as an alias for `position(fixed, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+// EXAMPLE:
+// .foo {
+//   @include absolute($top: 1em, $left: 50%);
+// }
+
+
+// *********************
+// ON EVENTS
+// *********************/
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self (false) - Whether or not to include current selector
+/// @see https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    } @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+// EXAMPLE:
+//  a.foo {
+//    color: red;
+
+    //  @include on-event {
+    //    color: blue;
+    //  }
+
+//  }
+
+//  a.foo {
+    //  if you want the link to always be blue:
+    //  @include on-event($self: true) {
+    //    color: blue;
+    //  }
+
+//  }
+
+
+// *********************
+// IMAGES
+// *********************/
+
+@mixin absolute-image($z-index: 0) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index;
+  right: 0;
+  top: 0;
+  min-width: 100%;
+  // max-width: none;
+
+      max-width: $site-width;
+      overflow: hidden;
+
+
+  min-height: 100%; // ???
+  max-height: none;
+
+  display: block;// this might break something
+
+  // for RWD images where .absolute-image is a span
+  img {
+    width: auto;
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%; // fixes the 1px of space to the left
+    // max-width: none;
+    max-width: 100%;//none was not keeping image responsive
+    left: 50%;
+    transform: translate(-50%, 0);
+
+  }
+  // .ie9 &,
+  // .ie10 & {
+  //     // in IE, the image overflow was not hidden
+  //     max-width: 1600px;
+  //     overflow: hidden;
+  //   }
+
+}// abs img
+
+
+// *********************
+// HIGHLIGHT
+// *********************/
+
+@mixin highlight($size: 1.6em) {
+    font-size: 1em;
+    letter-spacing: .29em;
+    line-height: 1;
+    text-transform: uppercase;
+    background: $black;
+    color: $white;
+    display:  block;
+    padding: .25em .125em .25em .25em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+      @include bp(tablet) {
+        font-size: $size;
+        }// * BP
+
+
+}
+
+
+
+// *********************
+// CSS3 GRADIENTS
+// Be careful with these since they can
+// really slow down your CSS. Don't overdo it.
+// *********************/
+
+// @include css-gradient(#dfdfdf,#f8f8f8);
+@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
+	background-color: $to;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image: -moz-linear-gradient(top, $from, $to);
+	background-image: -o-linear-gradient(top, $from, $to);
+	background-image: linear-gradient(to bottom, $from, $to);
+}
+
+/// Stripe builder
+/// @author Hugo Giraudel
+/// @param {Direction} $direction - Gradient direction
+/// @param {List} $colors - List of colors
+/// @output `background-image` if several colors, `background-color` if only one
+@mixin stripes($direction, $colors) {
+  $length: length($colors);
+
+  @if $length > 1 {
+    $stripes: ();
+
+    @for $i from 1 through $length {
+      $stripe: (100% / $length) * ($i - 1);
+
+      @if $i > 1 {
+        $stripes: append($stripes, nth($colors, $i - 1) $stripe, comma);
+      }
+
+      $stripes: append($stripes, nth($colors, $i) $stripe, comma);
+    }
+
+    background-image: linear-gradient($direction, $stripes);
+  } @else if $length == 1 {
+    background-color: $colors;
+  }
+}
+
+// EXAMPLE:
+// body {
+//  @include stripes(to right, #8e44ad #2c3e50 #2980b9 #16a085 #27ae60);
+//}

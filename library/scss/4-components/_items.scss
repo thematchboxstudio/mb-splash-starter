@@ -1,0 +1,225 @@
+// ITEMS
+
+.items {
+  margin-bottom: $margin3x;
+
+ h1 {
+
+   }
+
+  h1 + h2 {
+    text-transform: none;
+    text-align: center;
+    margin-bottom: $marginhalf + $marginquarter;
+  }
+
+  &.expertise h2 {
+    padding: $marginhalf 0 0;
+    text-transform: none;
+    margin: 0 0 ($marginquarter / 2);
+  }// expertise
+
+  .callout + &,
+  .app-highlights + &,
+  .hero + &,
+  .half-and-half3 + & {
+    margin-top: $margin3x;
+  }
+
+}// related-items
+
+
+.item { ////////////////////////////////////////// ITEM
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: $margin;
+  width: 100%;
+  @include bp(phone-landscape) {
+    width: 49%;
+    margin-bottom: 1%;//$margin;
+    margin-right: 1%;
+    &:nth-of-type(2n) {
+      margin-right: 0;
+    }
+
+  }// * BP
+  @include bp(tablet-small){
+    width: 32.6666666666667%;
+    &:nth-of-type(2n) {
+      margin-right: 1%;
+    }
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+  }// * BP
+  @include bp(tablet) {
+    &:hover {
+      .absolute-center {
+        color: $black;
+        &:after {
+            background: $black;
+          }
+      }
+
+    }// hover
+    &.no-image:hover {
+    }
+  }// * BP
+  .client & {
+    margin-bottom: 0;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+
+    // the project links
+    @at-root {
+        a#{&} {
+          background: $black;
+          .client & {
+            background: transparent;
+            }
+            img {
+              @include hovers(opacity .2s ease-in-out);
+              //opacity: .99;
+            }
+            h2 {
+              font-size: 1.25em;
+              color: $red;
+              padding: 0;
+              border-bottom: 4px solid $red;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              .client & {
+                text-align: center;
+                border-bottom: none;
+                em {
+                  font-style: normal;
+                  border-bottom: 4px solid $red;
+                }
+              }
+            }
+
+          #body-class:not(.handheld) & {
+
+            &:hover {
+              .work-hover-info {
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.8);
+
+              }
+              h1, h2, h3, h4 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              img {
+               // opacity: .25;
+              }
+
+            }// hover
+
+          }// not handheld
+
+        }// a
+    }// at root
+
+
+  a {
+  font-weight: 700;
+  text-decoration: none;
+  }
+  h2 {
+    text-transform: none;
+    padding: 0 $margin 0 0;
+  }
+  p {
+    padding: 0 $margin 0 0;
+  }
+
+
+  .features & {
+    h2, h3, h4, h5, h6 {
+      text-transform: none;
+    }
+    p { color: $white; }
+  }// features
+
+
+  .expertise & {
+    // the expertise icons on the expertise page
+    margin-bottom: $margin3x;
+    text-align: center;
+    width: 45%;
+    margin-right: 10%;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    @include bp(phone-landscape) {
+      width: 49%;
+      margin-right: 1%;
+    }// * BP
+    @include bp(tablet-small){
+      width: 32.6666666666667%;
+      &:nth-child(2n) {
+        margin-right: 1%;
+      }
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+      &:hover {
+        opacity: .85;
+      }
+    }// * BP
+
+    a {
+      display: block;
+
+      &:hover {
+        svg path, svg circle, svg rect {
+          fill: $accent;
+        }
+        h2 {
+          color: $accent;
+        }
+      }
+      h2, svg path, svg circle, svg rect {
+        @include hovers;
+      }
+    }
+    img, svg {
+      max-width: 125px;
+      margin: 0 auto;
+    }
+
+  }// expertise
+
+  &.no-image {
+    background: $red;
+    //color: $white;
+    @include bp(tablet) {
+
+    }
+  }
+  .absolute-center {
+    @include absolute-center();
+    @include hovers;
+    text-transform: lowercase;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    color: $white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+}// item

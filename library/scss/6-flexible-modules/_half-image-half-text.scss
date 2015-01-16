@@ -1,0 +1,461 @@
+// half image half text
+
+
+.half-and-half {
+	position: relative;
+	overflow: hidden;
+	body:not(.home) & h1 {
+		text-transform: none;
+		}
+	@include bp(tablet-small) {
+		display: table;
+		width: 100%;
+		vertical-align: middle;
+			// try and remedy the jank of when this image isn't loaded
+			min-height: 482px;
+		}
+	@include bp(1310px) {
+		// position: relative;
+		padding: 0 8em 0 0;
+		&.rev {
+			padding: 0 0 0 8em;
+		}
+	}// * BP
+}// half-and-half
+
+.half-image {
+	display: none;
+	@include bp(tablet-small) {
+	display: table-cell;
+	vertical-align: middle;
+	width: 50%;//45%;
+
+
+	}
+	img {
+	}
+	&.highlights-image  {
+		float: right;
+	}
+
+
+
+	// fix for IE, so the half image will scale
+	.lazyload {
+		width: 100%;
+		span {
+			width: 100%;
+			img {
+				width: auto;
+			}
+		}
+	}
+	// fix for ie
+
+}
+
+
+.half-text {
+	position: relative;
+	max-width: 1000px;
+	width: 85%;// to match new width
+	margin: $margin2x auto;
+	z-index: 1;
+	//padding-bottom: $margin2x;
+	position: relative;
+	@include bp(tablet-small) {
+		display: table-cell;
+		vertical-align: middle;
+		width: auto;// this doesn't matter
+		margin: 0;
+		padding: 0 $margin $margin2x;
+
+
+		.handheld & { // on tablet at slightly larger, this fixes some jank caused by the image not being there
+			width: 85%;
+			margin: $margin2x auto 0;
+			padding-bottom: $margin2x;
+			display: block;
+			@include bp(tablet-small) {
+				display: table-cell;
+				padding-bottom: 0;
+			}
+		}
+	}
+	@include bp(tablet) {
+		//padding: 0 $margin3x 0 0;
+		}// * BP
+	@include bp(desktop) {
+		}
+	@include bp($site-width) {
+		}
+
+	.flag {
+		margin: 0 0 $margin;
+		@include bp(tablet) {
+			//margin: 0 0 $margin;
+			}// * BP
+	}
+	.flag__image {
+		width: auto;
+		display: table-cell;
+		padding-right: $margin;
+		vertical-align: middle;
+
+		img, svg {
+			margin: 0 auto;// $margin;
+			max-width: 60px;
+			@include bp(phone-landscape){
+				width: auto;
+				margin: 0;
+			}// * BP
+			@include bp(tablet) {
+				max-width: 96px;
+			}// * BP
+		}
+	}// flag__image
+	.flag__body {
+		display: table-cell;
+		vertical-align: middle;
+		@include bp(phone-landscape){
+			width: auto;
+			// display: table-cell;
+			// vertical-align: middle;
+		}
+	}
+
+	p {
+	}
+
+	.half-text-bg {
+		display: none;
+		@include bp(tablet-small) {
+			position: absolute;
+			z-index: -1;
+			right: 0;
+			display: block;
+			bottom: 0;
+			transform: scale(.75);
+			transform-origin: bottom center;
+			width: 100%;
+		}// * BP
+		@include bp(desktop) {
+			bottom: 0;
+			transform: scale(1);
+			}// * BP
+	}
+
+	svg {
+		path,
+		rect,
+		circle {
+			fill: $red;
+		}
+	}
+
+}// half-text
+
+
+.half-image + .half-text {
+	padding: 0;
+	@include bp(iphone6wide) {
+	padding: 0 ($margin + $marginhalf);
+}
+}
+
+
+.half-image-half-text  { /////////////////////////////////////////////////////HALF AND HALF
+	position: relative;
+	overflow: hidden;
+	h1 {
+		text-transform: none;
+		//white-space: nowrap;
+		}
+	@include bp(tablet-small) {
+		display: table;
+		width: 100%;
+		vertical-align: middle;
+		}
+	@include bp(1310px) {
+		position: relative;
+		padding: 0 8em 0 0;
+	}// * BP
+	&.alt {
+		margin: 0;
+		padding: 0;
+		.content-wrap {
+			margin: 0;
+			width: 100%;
+			padding: $margin 0 $margin2x;
+			background: transparentize($white, .15);
+			@include bp(phone-large) {
+				width: 85%;
+				margin: $margin2x auto;
+				padding: $margin2x;
+				}// * BP
+			@include bp(tablet-small) {
+				padding: $margin2x $margin3x $margin2x 0;
+			}
+			@include bp(desktop-plus) {
+				padding: $margin2x $margin5x $margin2x 0;
+				width: 80%;
+				margin: $margin6x auto;
+			}
+		}
+		.half-image {
+			display: block;
+			@include bp(tablet-small) {
+				display: table-cell;
+				padding-bottom: 0;
+				}// * BP
+			img {
+				max-height: 350px;
+				margin: 0 auto;
+				@include bp(tablet) {
+					max-height: none;
+				}
+			}
+		}
+		.half-text {
+			padding: 0;
+			h2 {
+				line-height: 1;
+			}
+
+		}// half-text
+
+
+	}// alt
+
+	.half-image {
+		display: block;
+		@include bp(tablet-small) {
+			display: table-cell;
+			vertical-align: middle;
+			width: 45%;
+			}// * BP
+		&.highlights-image  {
+			float: right;
+		}
+	}// half-image
+
+	.half-text {
+		z-index: 1;
+		padding-bottom: $margin2x;
+		@include bp(tablet-small) {
+			display: table-cell;
+			vertical-align: middle;
+			width: auto;
+			margin: 0;
+			padding: $margin3x $margin3x $margin3x 0;
+		}
+
+		.flag {
+			margin: 0 0 $marginhalf;
+			@include bp(tablet) {
+				margin: 0 0 $marginhalf;////
+				}// * BP
+		}
+		.flag__image {
+				// ios7 fix
+				.ios7 & {
+					width: 25%;
+					min-width: 50px;
+				}
+				// ios7 fix
+				display: table-cell;
+				padding-right: $marginhalf;
+				vertical-align: middle;
+
+
+			svg { // the expertise icon
+				display: block;
+				margin: 0 auto;
+				width: 50px;
+				height: 50px;
+				@include bp(phone-landscape){
+					margin: 0;
+				}// * BP
+			}
+		}// flag__image
+		.flag__body {
+
+			@include bp(phone-landscape){
+				// ios7 fix
+				.ios7 & {
+					width: 75%;
+				}
+				// ios7 fix
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+
+		h2 {
+			margin-bottom: .25em;
+		}
+		p {
+			margin-bottom: 0;
+		}
+
+
+		.half-text-bg {
+			display: none;
+			@include bp(tablet-small) {
+				position: absolute;
+				z-index: -1;
+				right: 0;
+				display: block;
+				bottom: -10%;
+				width: 100%;
+			}// * BP
+		}
+
+
+
+
+	}// half-text
+
+
+
+}// half-and-half
+
+
+.icon-sizer{
+	width:100%;
+
+	.size-wrap{
+		position: relative;
+		z-index: 2;
+		padding-bottom:100%;
+		height:0;
+	}
+
+}
+
+
+
+// FEATURED WORK
+// THIS IS THE HOME WORK MODULE STUFF
+
+.half-and-half-50-50 { /////////////////////////////////////////////////////PRODUCT
+
+	// right now this is only used on the homepage
+
+	background: $white;
+
+	@include bp(1310px) {
+		padding: 0;
+	}// * BP
+
+	.product-wrap {
+		@include bp(desktop) {
+			padding-bottom: 60%;
+			height: 0;
+			margin: 0 auto;
+			position: relative;
+			z-index: 2;
+		}
+	}// product-wrap
+
+
+	.work-intro {
+		padding-bottom: $margin2x + $marginhalf;
+		@include bp(tablet) {
+			padding-bottom: (3.25 * $margin2x);
+		}// * BP
+	}
+
+
+	h1 {
+	}
+
+
+	h2 {
+		text-transform: none;
+		padding: 0;
+		margin: 0 0 ($marginquarter / 2);
+	}
+
+	.half-and-half-wrap {
+		z-index: 3;
+		bottom: inherit;
+		top: 0;
+		padding-top: $margin3x + $marginhalf;
+		padding-bottom: $margin2x;
+		@include bp(tablet-small) {
+			height: 100%;
+			padding-top: $margin4x + $marginquarter;
+			}// * BP
+		@include bp(desktop) {
+			padding: 0;
+			}// * BP
+	}// half-and-half-wrap
+	.half-empty {
+		width: 0;
+		@include bp(tablet) {
+			width: 34%;
+			height:100%;
+		}// * BP
+	}// half-empty
+
+	.half-text {
+		background: transparent;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		@include bp(tablet) {
+			width: 66%;
+			float: left;
+			display: block;
+			position: relative;
+		}
+		@include bp(desktop) {
+			top: 50%;
+			transform: translate(0, -50%);
+		}// * BP
+	}// half-text
+
+
+	.half-image.absolute {
+		display: none;
+		@include bp(tablet-small) {
+			width: 100%;
+			margin: 0;
+			position: relative;
+			z-index: 2;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			}// * BP
+		@include bp(tablet) {
+			width: 40%;
+			display: block;
+			max-height: 100%;
+			top: 0;
+			}// * BP
+		@include bp(desktop) {
+			width: 46%;
+			//top: auto;
+			}// * BP
+		&.highlights-image  {
+			float: right;
+		}
+	}// half-image. absolute
+
+
+}// half-and-half
+
+.half-and-half-wrap {
+	@include bp(tablet-small) {
+		padding-top: $margin3x;
+	}
+	@include bp(desktop) {
+		padding: 0;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}// * BP
+}

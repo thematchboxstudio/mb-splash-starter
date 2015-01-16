@@ -1,0 +1,62 @@
+// 2 col text module
+// with a heading
+
+.text-columns {
+
+	.title-wrap + .content-wrap {
+  		padding: ($margin3x + $marginhalf) 0 $margin3x;
+
+	    @include bp(tablet) {
+	      padding: $margin4x 0;
+	     }// * BP
+
+	}// title-wrap + content-wrap
+
+	.content-wrap {
+		padding: $margin2x 0 ($margin2x + $marginhalf);
+
+		@include bp(tablet) {
+		  padding: $margin4x 0;
+		}// * BP
+
+	}// content-wrap
+
+	&.with-title {
+
+	  .content-wrap {
+	    padding: $margin5x 0 $margin4x;
+	  }
+
+	}// with-title
+
+}// text-columns
+
+.column-heading {
+	text-transform: none;
+	text-align: center;
+	margin-bottom: $marginhalf + $marginquarter;
+
+	&.no-column-text {
+	  margin-bottom: 0;
+	}
+
+}// column-heading
+
+.columns {
+  columns: 2 300px;
+  column-gap: $margin3x;
+
+  .no-csscolumns & {
+
+  }// no columns
+
+  p {
+    margin-bottom: 0;
+    margin-top: $margin + $marginhalf;
+  }// p
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+}// columns

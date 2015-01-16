@@ -1,0 +1,590 @@
+// BASE
+
+// ********************
+// GENERAL STYLES
+// ********************
+// BORDER-BOX ALL THE THINGS! (http://paulirish.com/2012/box-sizing-border-box-ftw/)
+* {
+	box-sizing: border-box;
+}
+
+// ********************
+// CLEARFIXIN'
+// ********************
+// Contain floats: nicolasgallagher.com/micro-clearfix-hack/
+.clearfix {
+	// add this class, or @include the mixin
+	@include clearfix;
+}// clearfix
+
+html {
+	// Windows phones also retain the 300ms delay on unzoomable pages, but they don't have an alternative gesture like iOS so it's possible for them to remove this delay as Chrome has. You can remove the delay using:
+	-ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+body {
+	font-family: $serif;
+	font-size: 100%;
+	line-height: 1.5;
+	color: $text-color;
+	overflow-x: hidden;
+}
+
+html, body {
+	height: 100%;
+}
+
+
+//////////////////UNCOMMENT THIS IF YOU'RE USING THE JS MQ DEAL
+// html {
+// 		font-family: 'mobile';
+// 	}
+
+// 	* html { /* IE6 */
+// 		font-family: 'desktop'
+// 	}
+
+// 	*+html { /* IE7 */
+// 		font-family: 'desktop'
+// 	}
+
+// 	@media \0screen {
+// 		html {  /* IE8 */
+// 			font-family: 'desktop'
+// 		}
+// 	}
+
+// 	Queries for supported browsers.
+// 	 -----------------------------------
+
+// 	@media screen and (min-width: 35em) {
+// 		html {
+// 			font-family: "skinny";
+// 		}
+// 	}
+
+// 	@media screen and (min-width: 56em) {
+// 		html {
+// 			font-family: "desktop";
+// 		}
+// 	}
+
+
+// ***********
+// Vetical Align
+// http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+// ************
+.parent-element {
+  transform-style: preserve-3d;
+}
+
+.element {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+// ********************
+// IMAGES
+// ********************
+
+// Put images to display: block to get rid of hidden space (cause I have never had it any other way).
+img {
+	display: block;
+	max-width: 100%;
+}
+.absolute-image {
+	@include absolute-image;
+}
+img.proportionate {
+	max-width: none;
+	height: 100%;
+}
+.image-background {
+	position: relative;
+	z-index: 2;
+}
+.v-align-wrap {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+// image alignment on a screen this size may be
+// a bit difficult. It's set to start aligning
+// and floating images at the next breakpoint,
+// but it's up to you. Feel free to change it up.
+
+.alignleft, img.alignleft {
+
+	 @include bp(25em) {
+ 		margin-right: $margin;
+		display: inline;
+		float: left;
+	  }// * BP
+
+}// alignleft
+
+.alignright, img.alignright {
+
+	@include bp(25em) {
+		margin-left: $margin;
+		display: inline;
+		float: right;
+	}// * BP
+
+}// alignright
+
+.aligncenter, img.aligncenter {
+
+	@include bp(25em) {
+		margin-right: auto;
+		margin-left: auto;
+		display: block;
+		clear: both;
+	}// * BP
+
+}// aligncenter
+
+
+// ********************
+// RESPONSIVE VIDEO EMBEDS
+// ********************
+// http://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php
+// This goes with a script in scripts.js
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+video, object {
+	max-width: 100%;
+	height: auto;
+}// video
+
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+
+#content {
+	max-width: $site-width;
+	margin: $margin2x auto 0;
+}
+
+.article-header {
+	margin: 0 0 $margin;
+}
+
+.archive-title {
+	margin-bottom: $margin;
+}
+
+// post meta
+.byline {
+	color: #999;
+	margin-bottom: 0;
+
+	time {}
+}
+
+// entry content
+.entry-content {
+
+	ul, ol {
+		list-style-type: disc;
+		padding: 0 0 0 2em;
+
+		li {
+			margin: 0 0 .75em;
+		}
+
+	}// ul, ol
+
+	img {
+		margin: 0 0 $margin 0;
+		height: auto;
+	}
+
+	pre {
+		background: #eee;
+		border: 1px solid #cecece;
+		padding: 10px;
+	}// pre
+
+}// entry-content
+
+.wp-caption {
+	background: #eee;
+	padding: 5px;
+
+	// images inside wp-caption
+	img {
+		margin-bottom: 0;
+		width: 100%;
+	}
+
+	p.wp-caption-text {
+		font-size: 0.85em;
+		margin: 4px 0 7px;
+		text-align: center;
+	}
+
+ }// end .wp-caption
+
+
+
+
+// *****************************************************************
+// PAGE NAVI STYLES
+// *****************************************************************
+
+.pagination,
+.wp-prev-next {
+	margin: 1.1em 0 2.2em;
+}// pagination
+
+.pagination {
+    text-align: center;
+
+    ul {
+        display: inline-block;
+        white-space: nowrap;
+        padding: 0;
+        clear: both;
+        margin: 1px;
+
+        li {
+            padding: 0;
+            margin: 0;
+            float: left;
+            display: inline;
+            overflow: hidden;
+
+            a, span {
+                margin: 0;
+                text-decoration: none;
+                padding: 0;
+                line-height: 1em;
+                font-size: 1em;
+                font-weight: normal;
+                padding: .5em;
+                min-width: 1em;
+                display: block;
+            }// a, span
+
+            span.current{
+            	font-weight: bold;
+            }
+
+            a:hover, a:focus {
+
+            }
+
+        }// li
+
+    }// ul
+
+}// pagination
+
+// fallback previous & next links
+.wp-prev-next {
+
+	.prev-link {
+		float: left;
+	}
+
+	.next-link {
+		float: right;
+	}
+
+}// end .wp-prev-next
+
+
+
+// /******************************************************************
+// COMMENT STYLES
+// ******************************************************************/
+
+// /* h3 comment title */
+// #comments {
+// 	margin-top: $margin;
+// 	/* number of comments span */
+// 	span {}
+
+// }
+
+// .comment-nav {
+
+// 	ul {
+
+// 		li {}
+
+// 	}
+// }
+
+
+// .commentlist {
+
+// 	li {
+// 		position: relative;
+// 		clear: both;
+// 		overflow: hidden;
+// 		list-style-type: none;
+// 		margin-bottom: $margin;
+// 		padding: 0.7335em 10px;
+
+// 		&:last-child {
+// 			margin-bottom: 0;
+// 		}
+
+// 		ul.children {
+// 			margin: 0;
+
+// 			li {}
+
+// 			/* variations */
+// 			.comment {}
+// 			.alt {}
+// 			.odd {}
+// 			.even {}
+// 			.depth-1 {}           /* change number for different depth */
+// 			.byuser {}
+// 			.bypostauthor {}
+// 			.comment-author-admin {}
+
+// 		} /* end .commentlist li ul.children */
+// 	}
+
+// 	li[class*=depth-] {
+// 		margin-top: 1.1em;
+// 	}
+
+// 	li.depth-1 {
+// 		margin-left: 0;
+// 		margin-top: 0;
+// 	}
+
+// 	li:not(.depth-1) {
+// 		margin-right: -10px;
+// 		margin-left: -10px;
+// 		margin-top: 0;
+// 		padding-bottom: 0;
+// 	}
+
+// 	li.depth-2 {}
+// 	li.depth-3 {}
+// 	li.depth-4 {}
+// 	li.depth-5 {}
+
+// 	/* general comment classes */
+// 	.alt {}
+// 	.odd {
+// 		background: #eee;
+// 	}
+// 	.even {
+// 		background: #fefefe;
+// 	}
+// 	.parent {}
+// 	.comment {}
+// 	.children {}
+// 	.pingback {}
+// 	.bypostauthor {}
+// 	.comment-author {}
+// 	.comment-author-admin {}
+// 	.thread-alt {}
+// 	.thread-odd {}
+// 	.thread-even {}
+
+// 	/* vcard */
+// 	.vcard {
+// 		margin-left: 50px;
+
+// 		cite.fn {
+// 			font-weight: 700;
+// 			font-style: normal;
+
+// 			a.url {}
+
+// 		}
+
+// 		time {
+// 			float: right;
+
+// 			a {
+// 				color: #999;
+// 				text-decoration: none;
+
+// 				&:hover {
+// 					text-decoration: underline;
+// 				}
+
+// 			}
+
+// 		}
+
+// 		img.photo {}
+
+// 		img.avatar {
+// 			position: absolute;
+// 			left: 10px;
+// 			padding: 2px;
+// 			border: 1px solid #cecece;
+// 			background: #fff;
+// 		}
+
+// 	} /* end .commentlist .vcard */
+
+
+// 	/* comment meta */
+// 	.comment-meta {
+
+// 		a {}
+
+// 	}
+
+// 	.commentmetadata {
+
+// 		a {}
+
+// 	}
+
+// 	/* comment content */
+// 	.comment_content {
+// 		margin-left: 50px;
+
+// 		p {
+// 			margin: 0.7335em 0 $margin;
+// 			font-size: 1em;
+// 			line-height: $margin;
+// 		}
+
+// 	} /* end .commentlist .comment_content */
+
+// 	/* comment reply link */
+// 	.comment-reply-link {
+// 		text-decoration: none;
+// 		float: right;
+// 		background: #4598bb;
+// 		padding: 3px 5px;
+// 		color: #fff;
+// 		opacity: 0.65;
+// 		margin-bottom: 10px;
+// 		font-weight: 700;
+// 		font-size: 0.9em;
+
+// 		&:hover,
+// 		&:focus {
+// 			opacity: 1;
+// 		}
+
+// 	} /* end .commentlist .comment-reply-link */
+
+// } /* end .commentlist */
+
+// /******************************************************************
+// COMMENT FORM STYLES
+// ******************************************************************/
+// #respond {
+// 	}
+
+// .respond-form {
+// 	margin: $margin 0;
+// 	padding-bottom: 2.2em;
+
+// 	form {
+// 		margin: 0.75em 0;
+
+// 		li {
+// 			list-style-type: none;
+// 			clear: both;
+// 			margin-bottom: 0.7335em;
+
+// 			label,
+// 			small {
+// 				display: none;
+// 			}
+// 		}
+
+// 		input[type=text],
+// 		input[type=email],
+// 		input[type=url],
+// 		textarea {
+// 			padding: 3px 6px;
+// 			background: #efefef;
+// 			border: 2px solid #cecece;
+// 			line-height: $margin;
+
+// 			&:focus {
+// 				background: #fff;
+// 			}
+
+// 			/* form validation */
+// 			&:invalid {
+// 				outline: none;
+// 				border-color: #fbc2c4;
+// 				background-color: #f6e7eb;
+// 				-webkit-box-shadow: none;
+// 				   -moz-box-shadow: none;
+// 				    -ms-box-shadow: none;
+// 						box-shadow: none;
+// 			}
+// 		}
+
+// 		input[type=text],
+// 		input[type=email],
+// 		input[type=url] {
+// 			//max-width: 400px;
+// 			//min-width: 250px;
+// 		}
+
+// 		textarea {
+// 			resize: none;
+// 			width: 97.3%;
+// 			min-height: 150px;
+// 		}
+
+// 	}
+// }
+
+// 	/* comment submit button */
+// 	#submit {}
+
+// 	/* comment form title */
+// 	#comment-form-title {
+// 		margin: 0 0 1.1em;
+// 	}
+
+// 	/* cancel comment reply link */
+// 	#cancel-comment-reply {
+// 		a {}
+// 	}
+
+// 	/* logged in comments */
+// 	.comments-logged-in-as {}
+
+// 	/* allowed tags */
+// 	#allowed_tags {
+// 		margin: $margin 10px 0.7335em 0;
+// 	}
+
+// 	/* no comments */
+// 	.nocomments {
+// 		margin: 0 20px 1.1em;
+// 	}

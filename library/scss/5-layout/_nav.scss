@@ -1,0 +1,278 @@
+// ********************
+// NAVIGATION STYLES
+// ********************
+
+/////////////////////////////////////// MOBILE NAV STUFF
+
+$larger: 40%;
+$smaller: (100% - $larger) / 2;
+
+a.menu-trigger {
+	height: 50%;
+	display: block;
+	width: $smaller;
+	color: $black;
+	font-size: .85em;
+	text-transform: uppercase;
+	text-align: center;
+	top: 1em;
+	left: 0;
+	position: relative;
+	z-index:10;
+	float: left;
+	text-decoration: none;
+	line-height: 1;
+	font-weight: 500;
+	padding-top: 19px;
+	top: 10px;
+
+	@include on-event {
+		color: $black;
+	}
+
+	@include bp(tablet) { display: none; }
+
+}// menu-trigger
+
+.logo-link {
+	background: $black;
+	padding: $margin;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 83%;
+	max-width: 177px;
+	min-height: 75px;
+	display: block;
+	width: $larger;
+	position: absolute;
+	left: 0;
+	right: 0;
+	float: left;
+	margin: 0 auto;
+	@extend %image-replacement;
+
+	@include bp(phone-landscape) {
+		max-width: 220px;
+		min-height: 93px;
+	}// * BP
+
+	@include bp(tablet) {
+		margin-top: -$margin;
+		padding: 0 0 4%;
+		float: none;
+		max-width: none;
+		background: transparent;
+		background-size: auto, 100%;
+		background-repeat: no-repeat;
+		background-position: center center, 0 0;
+		background-color: transparent;
+		position: relative;
+		width: 304px;
+		height: 162px;
+
+		img { display: none; }
+
+
+		}// * BP //++++++++++++++++++++++++++++++++++++++++++++++++/
+
+		img { margin: 0 auto; }
+
+}// logo-link
+
+
+//// SIDE NAV - most styles are in vendors/ocnav-components.scss
+#side {
+
+	.login a {
+
+		@include on-event {
+			color: $black;
+		}
+	}// login a
+
+	// Custom Scrollbar for the sidebar (webkit only) from http://css-tricks.com/examples/WebKitScrollbars/
+	&::-webkit-scrollbar {
+	    width: 6px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+	   background: lighten($black, 95%);
+		}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+	  -webkit-border-radius: 10px;
+	  border-radius: 10px;
+	  background: $red;
+		}
+	&::-webkit-scrollbar-thumb:window-inactive {
+		}
+
+	.no-csstransforms3d.no-csstransitions & {
+		margin-left: -100%;
+		}
+	.no-csstransforms3d.no-csstransitions .active-nav & {
+		margin-left: 0;
+		}
+
+}// #side
+
+
+/////////////////////////////////////// END MOBILE NAV STUFF
+
+
+
+// all navs have a .nav class applied via
+// the wp_menu function; this is so we can
+// easily write one group of styles for
+// the navs on the site so our css is cleaner
+// and more scalable.
+
+
+nav[role="navigation"] {
+	display: none;
+
+	@include bp(tablet) {
+		display: block;
+		}// * BP
+
+}// nav
+
+.nav {
+	border-bottom: 0;
+	margin: 0;
+
+	@include bp(tablet) {
+		background: #eee;
+		border: 0;
+	}// * BP
+
+	ul {
+		@include clearfix;
+		margin: 0;
+	}
+
+	li {
+
+		@include bp(tablet) {
+			float: left;
+			position: relative;
+		}// * BP
+
+		a {
+			display: block;
+			text-decoration: none;
+			padding: 10px 10px;
+			background-color: #eee;
+
+			@include bp(tablet) {
+				border-bottom: 0;
+			}// * BP
+
+
+			// remember this is for mobile ONLY, so there's no need
+			// to even declare hover styles here, you can do it in
+			// the style.scss file where it's relevant. We want to
+			// keep this file as small as possible!
+
+			@include on-event {
+
+				@include bp(tablet) {
+					background-color: #dedede;
+				}// * BP
+
+			}// on-event
+		}
+
+		&:first-child {}
+
+		&:last-child {}
+
+
+		// so you really have to rethink your dropdowns for mobile.
+		// you don't want to have it expand too much because the
+		// screen is so small. How you manage your menu should
+		// depend on the project. Here's some great info on it:
+		// http://www.alistapart.com/articles/organizing-mobile/
+
+		ul.sub-menu,
+		ul.children {
+
+			@include bp(tablet) {
+				margin: 0;
+				width: auto;
+				border-top: 0;
+				position: absolute;
+				display: none;
+				z-index: 8999;
+			}// * BP
+
+
+			li {
+
+				a {
+					padding-left: 30px;
+
+					@include bp(tablet) {
+						padding-left: 10px;
+						border-right: 0;
+						display: block;
+						width: 180px;
+					}// * BP
+
+					@include on-event {}
+
+				}// a
+
+				&:first-child {}
+
+				&:last-child {
+
+					@include bp(tablet) {
+						border-bottom: 0;
+					}
+
+				}// last-child
+
+			}// li
+
+			// highlight sub-menu current page
+			li.current-menu-item,
+			li.current_page_item,
+			li.current-page-ancestor {
+
+				a {
+
+				}
+
+			}// highlight current page
+
+		}// children
+
+		// showing sub-menus
+		&:hover ul {
+
+			@include bp(tablet) {
+				top: auto;
+				display: block;
+			}// * BP
+
+		}
+
+	}//  end .menu li
+
+	// highlight current page
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor,
+	li.current_page_parent {
+
+		a {
+			background: $accent;
+			color: $white;
+		}
+
+	}  // end current highlighters
+
+} // end .nav
